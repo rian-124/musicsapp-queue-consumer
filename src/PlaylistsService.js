@@ -13,8 +13,10 @@ class PlaylistsService {
     };
 
     const result = await this._pool.query(query);
-
-    return mapDBToPlaylistModel(result.rows);
+    const playlist = mapDBToPlaylistModel(result.rows);
+    return {
+      playlist,
+    };
   }
 
   async getPlaylistOwner(playlistsId) {
